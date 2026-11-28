@@ -477,3 +477,9 @@ class Favorite(models.Model):
 
     def __str__(self):
         return f"{self.user} ♥ {self.product}"
+
+class Order(models.Model):
+    STATUS = [("new", "Нове"), ("paid", "Оплачено"), ("failed", "Помилка")]
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+    status = models.CharField(max_length=10, choices=STATUS, default="new")
+    created = models.DateTimeField(auto_now_add=True)

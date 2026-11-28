@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тестовий платіж</title>
+</head>
+<body>
+  <h1>Тестовий платіж (тільки DEBUG)</h1>
+  <form method="post">
+    {% csrf_token %}
+    <p><label>Сума, грн: <input name="amount" value="10.00"></label></p>
+    <p><label>Опис: <input name="description" value="Тестовий платіж"></label></p>
+    <button type="submit">Перейти до оплати</button>
+  </form>
+</body>
+</html>

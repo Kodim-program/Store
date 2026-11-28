@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Результат оплати</title>
+</head>
+<body>
+  {% if payment.status == "paid" %}
+    <h1>Дякуємо! Оплату отримано ✅</h1>
+    <p>Сума: {{ payment.amount }} грн</p>
+  {% elif payment.status == "failed" %}
+    <h1>Оплата не пройшла ❌</h1>
+    <a href="{% url 'payments:pay' payment.id %}">Спробувати ще раз</a>
+  {% else %}
+    <h1>Чекаємо підтвердження оплати…</h1>
+    <p>Оновіть сторінку за кілька секунд.</p>
+  {% endif %}
+</body>
+</html>

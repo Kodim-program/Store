@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 
+LIQPAY_PUBLIC_KEY = os.environ["LIQPAY_PUBLIC_KEY"]
+LIQPAY_PRIVATE_KEY = os.environ["LIQPAY_PRIVATE_KEY"]
+SITE_URL = os.environ["SITE_URL"]
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'internet_store',
+    "payments",
 ]
 
 MIDDLEWARE = [
@@ -195,3 +200,8 @@ REST_FRAMEWORK = {
         'reviews': '10/hour', 'checkout': '30/hour', 'auth': '10/min',
     },
 }
+
+LIQPAY_PUBLIC_KEY = os.environ.get("LIQPAY_PUBLIC_KEY", "")
+LIQPAY_PRIVATE_KEY = os.environ.get("LIQPAY_PRIVATE_KEY", "")
+LIQPAY_SANDBOX = os.environ.get("LIQPAY_SANDBOX", "1") == "1"
+SITE_URL = os.environ.get("SITE_URL", "http://localhost:8000").rstrip("/")

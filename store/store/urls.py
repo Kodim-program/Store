@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('internet_store.api.urls')),
     path('', include('internet_store.urls')),
+    path("payments/", include("payments.urls")),
 ]

@@ -16,10 +16,6 @@ from .search import search_products
 from .services import OutOfStock, place_order, remember_delivery
 from .models import Category, Order, OrderItem, Product, ProductVariant, ReviewPhoto, get_profile
 
-PAGE_SIZE = 12
-
-
-
 def index(request):
     hits = Product.objects.filter(is_active=True, is_hit=True).select_related("category").prefetch_related("variants")
     sub_ids = hits.values_list("category_id", flat=True)

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Оплата</title>
+</head>
+<body>
+  <h1>{{ payment.description }}</h1>
+  <p>До сплати: <strong>{{ payment.amount }} грн</strong></p>
+
+  <div id="liqpay_checkout"></div>
+  <script>
+    window.LiqPayCheckoutCallback = function () {
+      LiqPayCheckout.init({
+        data: "{{ data }}",
+        signature: "{{ signature }}",
+        embedTo: "#liqpay_checkout",
+        mode: "embed"
+      });
+    };
+  </script>
+  <script src="//static.liqpay.ua/libjs/checkout.js" async></script>
+</body>
+</html>
